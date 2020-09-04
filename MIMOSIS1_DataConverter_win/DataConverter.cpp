@@ -36,37 +36,13 @@ void DataConverter::init()
 {
 	MSG(DEB, "init() --> starts");
 
-	if(!SYSTEM_SEL.compare("win")) 
-	{	
-		MSG(CNTR, "\tSYSTEM: WINDOWS")
-		slash = backslash;
-		
-		if(config.ReadFile("config_windows.txt", kEnvUser) < 0)
-		{ 	
-			MSG(ERR,  "Could not read configuration file in DataConverter - exit")
-			exit(0);
-		}
-	}
-	else if(!SYSTEM_SEL.compare("unix")) {
-		
-		MSG(CNTR, "\tSYSTEM: LINUX")
-		slash = forwardslash;
-		
-		if(config.ReadFile("config_linux.txt", kEnvUser) < 0)
-		{ 	
-			MSG(ERR, "Could not read configuration file in DataConverter - exit")
-			exit(0);
-		}
-	}
-	else 
-	{
-		MSG(ERR, "Define WINDOWS or LINUX !!! ")
+	if(config.ReadFile("config_windows.txt", kEnvUser) < 0)
+	{ 	
+		MSG(ERR,  "Could not read configuration file in DataConverter - exit")
 		exit(0);
 	}
 	
-	MSG(CNTR, "\tslash: " << slash )
-
-
+	
 	_in_file_path = config.GetValue("_in_file_path", "");
 	_in_file_name = config.GetValue("_in_file_name", "");
 	_out_tree_file_path = config.GetValue("_out_tree_file_path", "");
@@ -217,18 +193,18 @@ std::string DataConverter::print_hex(std::string s, bool upper_case)
 void DataConverter::open_file()
 {
 	//Open file
-	in_file.open(_in_file_path + slash + _in_file_name, std::ios::out | std::ios::in | std::ios::binary);
+	in_file.open(_in_file_path + "\\" + _in_file_name, std::ios::out | std::ios::in | std::ios::binary);
 
 	in_file.seekg(0, std::ios::beg);
 	_input_file_size = get_file_size();
 
 	if (!in_file.is_open())
 	{
-		MSG(ERR, "There is no input file:" << _in_file_path + slash + _in_file_name << " -- exit");
+		MSG(ERR, "There is no input file:" << _in_file_path + "\\" + _in_file_name << " -- exit");
 		exit(0);
 	}
 	else {
-		MSG(INFO, "Input file loaded: " << _in_file_path << slash << _in_file_name);
+		MSG(INFO, "Input file loaded: " << _in_file_path << "\\" << _in_file_name);
 		MSG(INFO, "Input file length: " << _input_file_size);
 	}
 	std::cout << "Control 0" << std::endl;

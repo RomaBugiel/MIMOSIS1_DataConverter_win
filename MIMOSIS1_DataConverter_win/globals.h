@@ -26,10 +26,4 @@
 
 const int VERBOSITY_LEVEL = 3;
 
-// User can define "win" or "unix"
-const std::string SYSTEM_SEL {"win"};
-
-const std::string backslash  {"\\"};
-const std::string forwardslash  {"/"};
-
 #endif
