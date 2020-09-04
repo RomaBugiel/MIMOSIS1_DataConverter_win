@@ -1,0 +1,31 @@
+_input_data_format:		3
+_output_data_format:	1
+
+_nb_of_rows: 			504
+_nb_of_columns:			1024
+_nb_of_frames:			100000
+_row_start:					0
+_row_end:					503
+_column_start:				0
+_column_end:				1023
+
+_in_file_path:				.\..\inputData
+_in_file_name:				RUN_000_step__0002.bin
+
+_out_tree_file_path:		.\..\outputData
+_out_tree_file_name:		mimosis1
+_out_prefix:				_2
+_out_tree_name:				mimosis1_raw_tree
+
+_is_noise:				1
+
+_param_1:				VBB
+_param_2:				VPH
+_param_3:				VTH
+
+_param_1_value:			0
+_param_2_value:			0
+_param_3_value:			0
+
+
+
